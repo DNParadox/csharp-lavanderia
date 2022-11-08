@@ -1,123 +1,67 @@
-﻿bool continua = true;
+﻿using System;
+using System.Diagnostics;
+using System.Reflection.PortableExecutable;
+
+bool continua = true;
+
+Lavanderia lavanderia = new Lavanderia();
 
 //Al momento loop
-//while (continua)
-//{
-//    Console.WriteLine("Vuoi usare una [lavatrice/asciugatrice?]");
-//    string risposta = Console.ReadLine();
-
-//    switch (risposta)
-//    {
-//        case "lavatrice":
-//            Console.WriteLine("Quale funzione vuoi utilizzare? ['rinfrescante','rinnovante', 'sgrassante']");
-
-//            break;
-
-//        case "asciugatrice":
-//            Console.WriteLine("Quale funzione vuoi utilizzare? ['rapido','intenso']");
-
-
-//            break ;
-//    }
-//}
-Lavanderia Lavanderia2 = new Lavanderia();
-
-
-public class Lavanderia
+while (continua)
 {
-    private Lavatrice[] LavatriciPresenti;
-    private Asciugatrice[] AsciugatriciPresenti;
-    public int NumeroLavatriciPresenti { get; set; }
-    public int NumeroAsciugatriciPresenti { get; set; }
+    Console.WriteLine("Vuoi usare una [lavatrice/asciugatrice?]");
+    string risposta = Console.ReadLine();
 
-  
-    public Lavanderia()
+    switch (risposta)
     {
-        LavatriciPresenti = new Lavatrice[5];
-        AsciugatriciPresenti = new Asciugatrice[5];
+        case "macchina":
+            lavanderia.Macchina();
+            break;
 
-    } 
 
-    public Lavanderia(int massimoNummeroDiLavatriciDisponibili)
-    {
-        LavatriciPresenti = new Lavatrice[massimoNummeroDiLavatriciDisponibili];
-        AsciugatriciPresenti = new Asciugatrice[massimoNummeroDiLavatriciDisponibili];
+        case "lavatrice":
+            Console.WriteLine("Quale funzione vuoi utilizzare? [1)rinfrescante2) rinnovante 3) sgrassante]");
+            int lavaggio = Convert.ToInt32(Console.ReadLine());
+            switch(lavaggio)
+            {
+                case 1:
+                    Console.WriteLine("Complimenti stai utilizzando un nest switch");
+                    lavanderia.Macchina();
+                    continua = false;
+                    break;
 
+                case 2:
+                    Console.WriteLine("Complimenti stai utilizzando un nest switch 2");
+                    continua = false;
+                    break;
+
+                case 3:
+                    Console.WriteLine("Complimenti stai utilizzando un nest switch 3");
+                    continua = false;
+                    break;
+            }
+            continua = false;
+            break;
+
+        case "asciugatrice":
+            Console.WriteLine("Quale funzione vuoi utilizzare? [1) 'rapido', 2)'intenso']");
+            int asciugatura = Convert.ToInt32(Console.ReadLine());
+            switch (asciugatura)
+            {
+                case 1:
+                    Console.WriteLine("Complimenti stai utilizzando un nest switch");
+                    continua = false;
+                    break;
+                case 2:
+                    Console.WriteLine("Complimenti stai utilizzando un nest switch 2");
+                    continua = false;
+                    break;
+            }
+            continua = false;
+            break;
     }
-
-
 }
 
-//Saldo
-
-
-
-public class Lavatrice
-{
-    // Costruttore
-   public Lavatrice(string nome, bool stato, Programmi programmaSelezionato, int detersivo, int ammorbidente, int durataLavaggio)
-    {
-        Nome = nome;
-        Stato = stato;
-        ProgrammaSelezionato = programmaSelezionato;
-        Detersivo = detersivo;
-        Ammorbidente = ammorbidente;
-        DurataLavaggio = durataLavaggio;
-
-    }
-
-    // Variabili
-    public string Nome { get; private set; }
-    public bool Stato { get; set; }
-    public Programmi ProgrammaSelezionato { get; set; }
-    public int Detersivo { get; set; }
-    public int Ammorbidente { get; set; }
-    public int DurataLavaggio { get; set; }
-}
-
-public class Programmi
-{
-    // COSTRUTTORE
-    public Programmi(string tipo, int costo, int durata, int consumoDetersivo, int consumoAmmorbidente)
-    {
-        Tipo = tipo;
-        Costo = costo;
-        Durata = durata;
-        ConsumoDetersivo = consumoDetersivo;
-        ConsumoAmmorbidente = consumoAmmorbidente;
-    }
-
-
-    // VARIABILI
-    public int Costo { get; set; }
-    public int Durata { get; set; }
-    public int ConsumoDetersivo { get; set; }
-    public int ConsumoAmmorbidente { get; set; }
-    public string Tipo { get; }
-}
-
-
-public class Asciugatrice
-{
-
-    // Costruttore 
-    public Asciugatrice(string nome, bool stato, Programmi programmaSelezionato, int durataDelLavaggio)
-    {
-        Nome = nome;
-        Stato = stato;
-        ProgrammaSelezionato = programmaSelezionato;
-        DurataDelLavaggio = durataDelLavaggio;
-    }
-
-
-    // Variabili
-    public string Nome { get; private set; }
-    public bool Stato { get; set; }
-    public Programmi ProgrammaSelezionato { get; set; }
-    public int DurataDelLavaggio { get; set; }
-
-    public int GuadagnoMacchine { get; set; }
-}
 
 
 
