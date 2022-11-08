@@ -18,9 +18,6 @@ public class Lavatrice
         caricato[1] = new Programmi("Rinfrescante", 2, 20, 20, 5);
         caricato[2] = new Programmi("Rinnovante", 3, 40, 40, 10);
         caricato[3] = new Programmi("Sgrassante", 4, 60, 60, 15);
-
-
-        
     }
 
 
@@ -29,8 +26,13 @@ public class Lavatrice
         Random rnd = new Random();
         int Programmi = rnd.Next(0, caricato.Length);
         ProgrammaSelezionato = caricato[Programmi];
+        GuadagnoMacchine += ProgrammaSelezionato.Costo;
+        Detersivo -= ProgrammaSelezionato.ConsumoDetersivo;
+        Ammorbidente -= ProgrammaSelezionato.ConsumoAmmorbidente;
     }
 
+
+  
 
     // Variabili
 
@@ -40,6 +42,7 @@ public class Lavatrice
     public int Detersivo { get; set; }
     public int Ammorbidente { get; set; }
     public int DurataLavaggio { get; set; }
+    public int GuadagnoMacchine { get; set; }
 
     public Programmi[] caricato;
 

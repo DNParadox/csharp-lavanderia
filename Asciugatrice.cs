@@ -19,7 +19,13 @@ public class Asciugatrice
 
 
 
-
+    public void caricoCasuale()
+    {
+        Random rnd = new Random();
+        int Programmi = rnd.Next(0, caricato.Length);
+        ProgrammaSelezionato = caricato[Programmi];
+        GuadagnoMacchine += ProgrammaSelezionato.Costo;
+    }
 
     // Variabili
     public Programmi[] caricato;
